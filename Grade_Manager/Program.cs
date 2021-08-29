@@ -32,7 +32,7 @@ namespace Grade_Manager
 
                 switch (choice)
                 {
-                    case "1": 
+                    case "1": ViewGrades();
                         {
                             break;
                         }
@@ -87,12 +87,21 @@ namespace Grade_Manager
             }
 
             
-                void Add_Grade()
-                {
-                    Console.WriteLine("Enter a grade 1-100");
-                    double gradeToBeAdded = Convert.ToDouble(Console.ReadLine());
-                    gradesList.Add(gradeToBeAdded);                
-                }
+            void Add_Grade()
+            {
+                Console.WriteLine("Enter a grade 1-100");
+                double gradeToBeAdded = Convert.ToDouble(Console.ReadLine());
+                gradesList.Add(gradeToBeAdded);
+                Console.WriteLine("");
+                Menu();
+            }
+
+            void ViewGrades()
+            {
+                gradesList.ForEach(i => Console.Write("{0}\t", i));
+                Console.WriteLine("");
+                Menu();
+            }
         }
     }
 }
