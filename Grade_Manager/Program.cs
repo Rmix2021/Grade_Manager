@@ -47,7 +47,7 @@ namespace Grade_Manager
                             break;
                         }
 
-                    case "4":
+                    case "4": Edit_Grade();
                         {
                             break;
                         }
@@ -98,8 +98,42 @@ namespace Grade_Manager
 
             void ViewGrades()
             {
-                gradesList.ForEach(i => Console.Write("{0}\t", i));
+                for (int i = 0; i < gradesList.Count; i++)
+                {
+                    Console.WriteLine($"{i} = {gradesList[i]}");
+                    Console.WriteLine("");
+                }
+
+                Menu();
+                
+            }
+
+            void Edit_Grade()
+            {
+                for (int i = 0; i < gradesList.Count; i++)
+                {
+                    Console.WriteLine($"{i} = {gradesList[i]}");
+                    Console.WriteLine("");
+                }
+                Console.WriteLine("Choose a position to edit (ie 0,1,2...etc)");
+                int choiceToEdit = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Replace with new grade.");
                 Console.WriteLine("");
+
+                double editChoiceWith = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("");
+
+                for (int i = 0; i < gradesList.Count; i++)
+                {
+                    if (i == choiceToEdit)
+                    {
+                        gradesList.RemoveAt(choiceToEdit);
+                        gradesList.Insert(choiceToEdit, editChoiceWith);
+                    }
+                }
+                Console.WriteLine("");
+
                 Menu();
             }
         }
