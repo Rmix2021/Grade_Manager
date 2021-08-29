@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Grade_Manager
 {
@@ -6,9 +10,10 @@ namespace Grade_Manager
     {
         static void Main(string[] args)
         {
+            List<double> gradesList = new List<double>();
             Menu();
 
-            static void Menu()
+            void Menu()
             { 
                 Console.WriteLine("****** Grade Manager *******");
                 Console.WriteLine("Keep track of your grades.");
@@ -22,11 +27,12 @@ namespace Grade_Manager
                 Console.WriteLine("8. Clear all stored grades.");
                 Console.WriteLine("9. Exit");
 
-                 string choice = Console.ReadLine();
+                string choice = Console.ReadLine();
+                
 
                 switch (choice)
                 {
-                    case "1":
+                    case "1": 
                         {
                             break;
                         }
@@ -36,7 +42,7 @@ namespace Grade_Manager
                             break;
                         }
 
-                    case "3":
+                    case "3": Add_Grade();
                         {
                             break;
                         }
@@ -71,12 +77,22 @@ namespace Grade_Manager
                             break;
                         }
 
-
+                    default:
+                        Console.WriteLine("PLease choose a number 1-9");
+                        break;
+                        
                 }
+                
 
-
-                    
             }
+
+            
+                void Add_Grade()
+                {
+                    Console.WriteLine("Enter a grade 1-100");
+                    double gradeToBeAdded = Convert.ToDouble(Console.ReadLine());
+                    gradesList.Add(gradeToBeAdded);                
+                }
         }
     }
 }
