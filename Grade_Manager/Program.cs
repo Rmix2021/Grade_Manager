@@ -15,17 +15,17 @@ namespace Grade_Manager
 
             void Menu()
             {
-                Console.WriteLine("****** Grade Manager *******");
-                Console.WriteLine("Keep track of your grades.");
-                Console.WriteLine("1. View currently stored grades.");
-                Console.WriteLine("2. View class grade average.");
-                Console.WriteLine("3. Add a grade.");
-                Console.WriteLine("4. Edit a grade.");
-                Console.WriteLine("5. Remove a student.");
-                Console.WriteLine("6. View top student.");
-                Console.WriteLine("7. View bottom student.");
-                Console.WriteLine("8. Clear all stored students and grades.");
-                Console.WriteLine("9. Exit");
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "**********   Grade Manager  **********  "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Keep track of your grades.              "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "1. View currently stored grades.        "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "2. View class grade average.            "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "3. Add a grade.                         "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "4. Edit a grade.                        "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "5. Remove a student.                    "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "6. View top student.                    "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "7. View bottom student.                 "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "8. Clear all stored students and grades."));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "9. Exit                                 "));
 
                 string choice = Console.ReadLine();
 
@@ -56,7 +56,7 @@ namespace Grade_Manager
                             break;
                         }
 
-                    case "5":
+                    case "5": RemoveStudent();
                         {
                             break;
                         }
@@ -82,7 +82,7 @@ namespace Grade_Manager
                         }
 
                     default:
-                        Console.WriteLine("PLease choose a number 1-9");
+                        Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "PLease choose a number 1-9      "));
                         Console.WriteLine("");
                         Menu();
                         break;
@@ -96,7 +96,7 @@ namespace Grade_Manager
             void Add_Grade()
             {
                 Console.Clear();
-                Console.WriteLine("Enter a grade 1-100");
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Enter a grade 1-100                     "));
                 double gradeToBeAdded = Convert.ToDouble(Console.ReadLine());
                 gradesList.Add(gradeToBeAdded);
                 Console.WriteLine("");
@@ -108,7 +108,7 @@ namespace Grade_Manager
                 Console.Clear();
                 for (int i = 0; i < gradesList.Count; i++)
                 {
-                    Console.WriteLine($"{i} = {gradesList[i]}");
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{i} = {gradesList[i]}              "));
                     Console.WriteLine("");
                 }
 
@@ -121,13 +121,13 @@ namespace Grade_Manager
                 Console.Clear();
                 for (int i = 0; i < gradesList.Count; i++)
                 {
-                    Console.WriteLine($"{i} = {gradesList[i]}");
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{i} = {gradesList[i]}              "));
                     Console.WriteLine("");
                 }
-                Console.WriteLine("Choose a position to edit (ie 0,1,2...etc)");
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Choose a position to edit (ie 0,1,2...etc)"));
                 int choiceToEdit = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine("Replace with new grade.");
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Replace with new grade.                   "));
                 Console.WriteLine("");
 
                 double editChoiceWith = Convert.ToDouble(Console.ReadLine());
@@ -145,7 +145,8 @@ namespace Grade_Manager
             {
             Console.Clear();
             double classAverage = gradesList.Average();
-            Console.WriteLine("The class average grade is" + " " + classAverage);
+
+            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "The class average grade is" + " " + classAverage));           
             Console.WriteLine("");
             Menu();
             }
@@ -160,8 +161,26 @@ namespace Grade_Manager
             {
                 Console.Clear();
                 gradesList.Clear();
-                Console.WriteLine("******CLEARED*****");
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "******CLEARED*****                        "));
                 Menu();
+            }
+
+            void RemoveStudent()
+            {
+                Console.Clear();
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Choose the student you wish to remove from class"));
+                Console.WriteLine("");
+
+                for (int i = 0; i < gradesList.Count; i++)
+                {
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{i} = {gradesList[i]}                "));
+                    Console.WriteLine("");
+                }
+
+                int choiceToRemove = Convert.ToInt32(Console.ReadLine());
+                gradesList.RemoveAt(choiceToRemove);
+                ViewGrades();
+
             }
         }
 
