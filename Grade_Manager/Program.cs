@@ -71,7 +71,7 @@ namespace Grade_Manager
                             break;
                         }
 
-                    case "8":
+                    case "8": ClearAllValues();
                         {
                             break;
                         }
@@ -95,6 +95,7 @@ namespace Grade_Manager
 
             void Add_Grade()
             {
+                Console.Clear();
                 Console.WriteLine("Enter a grade 1-100");
                 double gradeToBeAdded = Convert.ToDouble(Console.ReadLine());
                 gradesList.Add(gradeToBeAdded);
@@ -104,6 +105,7 @@ namespace Grade_Manager
 
             void ViewGrades()
             {
+                Console.Clear();
                 for (int i = 0; i < gradesList.Count; i++)
                 {
                     Console.WriteLine($"{i} = {gradesList[i]}");
@@ -116,6 +118,7 @@ namespace Grade_Manager
 
             void Edit_Grade()
             {
+                Console.Clear();
                 for (int i = 0; i < gradesList.Count; i++)
                 {
                     Console.WriteLine($"{i} = {gradesList[i]}");
@@ -139,7 +142,8 @@ namespace Grade_Manager
             }
 
             void ClassAverage()
-            { 
+            {
+            Console.Clear();
             double classAverage = gradesList.Average();
             Console.WriteLine("The class average grade is" + " " + classAverage);
             Console.WriteLine("");
@@ -148,7 +152,16 @@ namespace Grade_Manager
 
             void Exit()
             {
+                Console.Clear();
                 Environment.Exit(9);
+            }
+
+            void ClearAllValues()
+            {
+                Console.Clear();
+                gradesList.Clear();
+                Console.WriteLine("******CLEARED*****");
+                Menu();
             }
         }
 
