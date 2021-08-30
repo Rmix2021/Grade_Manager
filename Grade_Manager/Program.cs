@@ -32,26 +32,22 @@ namespace Grade_Manager
 
                 switch (choice)
                 {
-                    case "1":
-                        ViewGrades();
+                    case "1": ViewGrades();
                         {
                             break;
                         }
 
-                    case "2":
-                        ClassAverage();
+                    case "2": ClassAverage();
                         {
                             break;
                         }
 
-                    case "3":
-                        Add_Grade();
+                    case "3": Add_Grade();
                         {
                             break;
                         }
 
-                    case "4":
-                        Edit_Grade();
+                    case "4": Edit_Grade();
                         {
                             break;
                         }
@@ -108,8 +104,8 @@ namespace Grade_Manager
                 Console.Clear();
                 if (gradesList.Count == 0)
                 {
-                    throw new InvalidOperationException("Empty list");
-                    
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
+                    Menu();
                 }
 
                 for (int i = 0; i < gradesList.Count; i++)
@@ -125,11 +121,19 @@ namespace Grade_Manager
             void Edit_Grade()
             {
                 Console.Clear();
+
+                if (gradesList.Count == 0)
+                {
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
+                    Menu();
+                }
+
                 for (int i = 0; i < gradesList.Count; i++)
                 {
                     Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{i} = {gradesList[i]}              "));
                     Console.WriteLine("");
                 }
+
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Choose a position to edit (ie 0,1,2...etc)"));
                 int choiceToEdit = Convert.ToInt32(Console.ReadLine());
 
@@ -150,6 +154,12 @@ namespace Grade_Manager
             void ClassAverage()
             {
             Console.Clear();
+                if (gradesList.Count == 0)
+                {
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
+                    Menu();
+                }
+
             double classAverage = gradesList.Average();
 
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "The class average grade is" + " " + classAverage));           
@@ -160,6 +170,12 @@ namespace Grade_Manager
             void Exit()
             {
                 Console.Clear();
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Exit? Press 9 again"));
+                int answer = Convert.ToInt32(Console.ReadLine());
+                if (answer != 9)
+                {
+                    Menu();
+                }
                 Environment.Exit(9);
             }
 
@@ -168,6 +184,7 @@ namespace Grade_Manager
                 Console.Clear();
                 gradesList.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "******CLEARED*****                        "));
+                Console.WriteLine("");
                 Menu();
             }
 
@@ -176,6 +193,12 @@ namespace Grade_Manager
                 Console.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Choose the student you wish to remove from class"));
                 Console.WriteLine("");
+
+                if (gradesList.Count == 0)
+                {
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
+                    Menu();
+                }
 
                 for (int i = 0; i < gradesList.Count; i++)
                 {
@@ -194,13 +217,14 @@ namespace Grade_Manager
                 Console.Clear();
                                
                 gradesList.Sort();
-                
+
                 if (gradesList.Count == 0)
                 {
-                    throw new InvalidOperationException("Empty list");
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
+                    Menu();
+                }
 
-                }                
-                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{gradesList.Count-1}  = {gradesList[gradesList.Count-1]}             "));
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{gradesList.Count-1}  = {gradesList[gradesList.Count-1]}             "));
                     Console.WriteLine("");
                 Menu();
             }
@@ -211,8 +235,8 @@ namespace Grade_Manager
                 gradesList.Sort();
                 if (gradesList.Count == 0)
                 {
-                    throw new InvalidOperationException("Empty list");
-
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
+                    Menu();
                 }
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{0}  = {gradesList[0]}             "));
                 Console.WriteLine("");
