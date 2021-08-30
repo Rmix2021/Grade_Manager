@@ -66,7 +66,7 @@ namespace Grade_Manager
                             break; 
                         }
 
-                    case "7":
+                    case "7": ViewBottomStudent();
                         {
                             break;
                         }
@@ -204,7 +204,21 @@ namespace Grade_Manager
                     Console.WriteLine("");
                 Menu();
             }
-                      
+
+            void ViewBottomStudent()
+            {
+                Console.Clear();
+                gradesList.Sort();
+                if (gradesList.Count == 0)
+                {
+                    throw new InvalidOperationException("Empty list");
+
+                }
+                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{0}  = {gradesList[0]}             "));
+                Console.WriteLine("");
+                Menu();
+            }
+
         }
 
     }
