@@ -14,7 +14,7 @@ namespace Grade_Manager
             Menu();
 
             void Menu()
-            { 
+            {
                 Console.WriteLine("****** Grade Manager *******");
                 Console.WriteLine("Keep track of your grades.");
                 Console.WriteLine("1. View currently stored grades.");
@@ -24,30 +24,34 @@ namespace Grade_Manager
                 Console.WriteLine("5. Remove a student.");
                 Console.WriteLine("6. View top student.");
                 Console.WriteLine("7. View bottom student.");
-                Console.WriteLine("8. Clear all stored grades.");
+                Console.WriteLine("8. Clear all stored students and grades.");
                 Console.WriteLine("9. Exit");
 
                 string choice = Console.ReadLine();
-                
+
 
                 switch (choice)
                 {
-                    case "1": ViewGrades();
+                    case "1":
+                        ViewGrades();
                         {
                             break;
                         }
 
                     case "2":
+                        ClassAverage();
                         {
                             break;
                         }
 
-                    case "3": Add_Grade();
+                    case "3":
+                        Add_Grade();
                         {
                             break;
                         }
 
-                    case "4": Edit_Grade();
+                    case "4":
+                        Edit_Grade();
                         {
                             break;
                         }
@@ -80,13 +84,13 @@ namespace Grade_Manager
                     default:
                         Console.WriteLine("PLease choose a number 1-9");
                         break;
-                        
+
                 }
-                
+
 
             }
 
-            
+
             void Add_Grade()
             {
                 Console.WriteLine("Enter a grade 1-100");
@@ -105,7 +109,7 @@ namespace Grade_Manager
                 }
 
                 Menu();
-                
+
             }
 
             void Edit_Grade()
@@ -124,18 +128,22 @@ namespace Grade_Manager
                 double editChoiceWith = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("");
 
-                for (int i = 0; i < gradesList.Count; i++)
-                {
-                    if (i == choiceToEdit)
-                    {
-                        gradesList.RemoveAt(choiceToEdit);
-                        gradesList.Insert(choiceToEdit, editChoiceWith);
-                    }
-                }
+                gradesList.RemoveAt(choiceToEdit);
+                gradesList.Insert(choiceToEdit, editChoiceWith);
+
                 Console.WriteLine("");
 
                 Menu();
             }
+
+            void ClassAverage()
+            { 
+            double classAverage = gradesList.Average();
+            Console.WriteLine("The class average grade is" + " " + classAverage);
+            Console.WriteLine("");
+            Menu();
+            }
         }
+
     }
 }
