@@ -76,13 +76,15 @@ namespace Grade_Manager
                             break;
                         }
 
-                    case "9":
+                    case "9": Exit();
                         {
                             break;
                         }
 
                     default:
                         Console.WriteLine("PLease choose a number 1-9");
+                        Console.WriteLine("");
+                        Menu();
                         break;
 
                 }
@@ -142,6 +144,11 @@ namespace Grade_Manager
             Console.WriteLine("The class average grade is" + " " + classAverage);
             Console.WriteLine("");
             Menu();
+            }
+
+            void Exit()
+            {
+                Environment.Exit(9);
             }
         }
 
