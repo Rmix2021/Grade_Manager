@@ -26,7 +26,7 @@ namespace Grade_Manager
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "7. View bottom student.                 "));
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "8. Clear all stored students and grades."));
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "9. Exit                                 "));
-
+                Console.SetCursorPosition(20,20);
                 string choice = Console.ReadLine();
 
 
@@ -93,6 +93,7 @@ namespace Grade_Manager
             {
                 Console.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Enter a grade 1-100                     "));
+                Console.SetCursorPosition(20, 20);
                 double gradeToBeAdded = Convert.ToDouble(Console.ReadLine());
                 gradesList.Add(gradeToBeAdded);
                 Console.WriteLine("");
@@ -139,7 +140,7 @@ namespace Grade_Manager
 
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Replace with new grade.                   "));
                 Console.WriteLine("");
-
+                Console.SetCursorPosition(20, 20);
                 double editChoiceWith = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("");
 
@@ -171,6 +172,7 @@ namespace Grade_Manager
             {
                 Console.Clear();
                 Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Exit? Press 9 again"));
+                Console.SetCursorPosition(20, 20);
                 int answer = Convert.ToInt32(Console.ReadLine());
                 if (answer != 9)
                 {
@@ -205,7 +207,7 @@ namespace Grade_Manager
                     Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{i} = {gradesList[i]}                "));
                     Console.WriteLine("");
                 }
-
+                Console.SetCursorPosition(20, 20);
                 int choiceToRemove = Convert.ToInt32(Console.ReadLine());
                 gradesList.RemoveAt(choiceToRemove);
                 ViewGrades();
