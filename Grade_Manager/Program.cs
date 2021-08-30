@@ -61,9 +61,9 @@ namespace Grade_Manager
                             break;
                         }
 
-                    case "6":
+                    case "6": ViewTopStudent();
                         {
-                            break;
+                            break; 
                         }
 
                     case "7":
@@ -106,6 +106,12 @@ namespace Grade_Manager
             void ViewGrades()
             {
                 Console.Clear();
+                if (gradesList.Count == 0)
+                {
+                    throw new InvalidOperationException("Empty list");
+                    
+                }
+
                 for (int i = 0; i < gradesList.Count; i++)
                 {
                     Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{i} = {gradesList[i]}              "));
@@ -182,6 +188,23 @@ namespace Grade_Manager
                 ViewGrades();
 
             }
+
+            void ViewTopStudent()
+            {
+                Console.Clear();
+                               
+                gradesList.Sort();
+                
+                if (gradesList.Count == 0)
+                {
+                    throw new InvalidOperationException("Empty list");
+
+                }                
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{gradesList.Count-1}  = {gradesList[gradesList.Count-1]}             "));
+                    Console.WriteLine("");
+                Menu();
+            }
+                      
         }
 
     }
