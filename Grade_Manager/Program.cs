@@ -97,6 +97,13 @@ namespace Grade_Manager
                 double gradeToBeAdded = Convert.ToDouble(Console.ReadLine());
                 gradesList.Add(gradeToBeAdded);
                 Console.WriteLine("");
+                if( gradeToBeAdded < 0 || gradeToBeAdded > 100)
+                {
+                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "PLease choose a number 1-100      "));
+                    Console.WriteLine("");
+                    Menu();
+                }
+
                 Menu();
             }
 
@@ -128,6 +135,7 @@ namespace Grade_Manager
                     Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
                     Menu();
                 }
+
 
                 for (int i = 0; i < gradesList.Count; i++)
                 {
@@ -201,7 +209,7 @@ namespace Grade_Manager
                     Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Gradebook is empty!                   "));
                     Menu();
                 }
-
+                                
                 for (int i = 0; i < gradesList.Count; i++)
                 {
                     Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"{i} = {gradesList[i]}                "));
@@ -209,6 +217,11 @@ namespace Grade_Manager
                 }
                 Console.SetCursorPosition(20, 20);
                 int choiceToRemove = Convert.ToInt32(Console.ReadLine());
+
+                          
+                
+                   
+
                 gradesList.RemoveAt(choiceToRemove);
                 ViewGrades();
 
@@ -216,8 +229,7 @@ namespace Grade_Manager
 
             void ViewTopStudent()
             {
-                Console.Clear();
-                               
+                Console.Clear();                               
                 gradesList.Sort();
 
                 if (gradesList.Count == 0)
