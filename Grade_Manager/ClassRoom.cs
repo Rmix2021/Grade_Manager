@@ -107,10 +107,17 @@ namespace Grade_Manager_OO
             void ShowStudents()
             {
                 Console.Clear();
-                WriteLineStudentDictionary();
-                Console.WriteLine("Press enter to continue.");                
-                Console.ReadLine();
-                ClassRoomDetailsMenu();
+                if (studentDictionary == null)
+                {
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    WriteLineStudentDictionary();
+                    Console.WriteLine("Press enter to continue.");                
+                    Console.ReadLine();
+                    ClassRoomDetailsMenu();
+                }
             }
 
             void AddStudent()
@@ -125,20 +132,48 @@ namespace Grade_Manager_OO
             void StudentDetailsMenu()
             {
                 Console.Clear();
-                Console.WriteLine("Type the Student name in which you would like edit");
-                WriteLineStudentDictionary();
-                string studentChoice = Console.ReadLine().ToUpper();
-                studentDictionary[studentChoice].EditStudentDetailsMenu();
+                if(studentDictionary == null)
+                {
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    Console.WriteLine("Type the Student name in which you would like edit");
+                    WriteLineStudentDictionary();
+                    string studentChoice = Console.ReadLine().ToUpper();
+                    if(studentDictionary.ContainsKey(studentChoice) != true)
+                    {
+                        ClassRoomDetailsMenu();
+                    }
+                    else
+                    {
+                        studentDictionary[studentChoice].EditStudentDetailsMenu();
+                    }
+                }
             }
 
             void RemoveStudent()
             {
                 Console.Clear();
-                Console.WriteLine("Type the Student name in which you would like to remove.");
-                WriteLineStudentDictionary();
-                string studentName = Console.ReadLine().ToUpper();
-                studentDictionary.Remove(studentName);
-                ClassRoomDetailsMenu();
+                if(studentDictionary == null)
+                {
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    Console.WriteLine("Type the Student name in which you would like to remove.");
+                    WriteLineStudentDictionary();
+                    string studentName = Console.ReadLine().ToUpper();
+                    if (studentDictionary.ContainsKey(studentName))
+                    {
+                        ClassRoomDetailsMenu();
+                    }
+                    else
+                    {
+                        studentDictionary.Remove(studentName);
+                    }
+
+                }
             }
 
             void ShowClassAverage()
@@ -154,24 +189,42 @@ namespace Grade_Manager_OO
 
             void ShowTopStudent()
             {
-                var max = studentDictionary.Max(average => average.Value);
                 Console.Clear();
-                Console.WriteLine("This is your best current student.");
-                Console.WriteLine(max.StudentName);               
-                Console.WriteLine("Press enter to continue.");                
-                Console.ReadLine();
-                ClassRoomDetailsMenu();
+                var max = studentDictionary.Max(average => average.Value);
+                if(studentDictionary == null)
+                {
+                    Console.WriteLine("There are no students yet.");
+                    Console.WriteLine("Press enter to continue.");
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    Console.WriteLine("This is your best current student.");
+                    Console.WriteLine(max.StudentName);               
+                    Console.WriteLine("Press enter to continue.");                
+                    Console.ReadLine();
+                    ClassRoomDetailsMenu();
+                }
             }
 
             void ShowBottomStudent()
             {
-                var min = studentDictionary.Min(average => average.Value);
                 Console.Clear();
-                Console.WriteLine("This is your best current student.");
-                Console.WriteLine(min.StudentName);
-                Console.WriteLine("Press enter to continue.");                
-                Console.ReadLine();
-                ClassRoomDetailsMenu();
+                var min = studentDictionary.Min(average => average.Value);
+                if(studentDictionary == null)
+                {
+                    Console.WriteLine("There are no students yet.");
+                    Console.WriteLine("Press enter to continue.");
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    Console.WriteLine("This is your best current student.");
+                    Console.WriteLine(min.StudentName);
+                    Console.WriteLine("Press enter to continue.");                
+                    Console.ReadLine();
+                    ClassRoomDetailsMenu();
+                }
             }
 
             void Compare2Student()

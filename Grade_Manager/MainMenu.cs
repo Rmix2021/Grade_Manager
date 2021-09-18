@@ -114,16 +114,23 @@ Students and all grades
             static void ClassRoomDetailsSubMenu()
             {
                 Console.Clear();
-                Console.WriteLine("Type the ClassRoom name in which you would like edit");
-                WriteLineClassRoomDictionary();
-                string classroomChoice = Console.ReadLine().ToUpper();
-                if(classRoomsDictionary.ContainsKey(classroomChoice) != true)
+                if(classRoomsDictionary == null)
                 {
                     Menu();
                 }
                 else
                 {
-                    classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
+                    Console.WriteLine("Type the ClassRoom name in which you would like edit");
+                    WriteLineClassRoomDictionary();
+                    string classroomChoice = Console.ReadLine().ToUpper();
+                    if(classRoomsDictionary.ContainsKey(classroomChoice) != true)
+                    {
+                        Menu();
+                    }
+                    else
+                    {
+                        classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
+                    }
                 }
             }
 
