@@ -19,16 +19,16 @@ namespace Grade_Manager_OO
         public static void Menu()
         {
             Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "*********Grade Manager Ver 2.0*********"));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Keep track of your Classrooms,         "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Students and all grades                "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "1. Show ClassRooms.                    "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "2. Add a ClassRoom.                    "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "3. Remove a ClassRoom.                 "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "4. ClassRoom Details Menu.             "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "9. Exit App.                           "));
-
-            Console.SetCursorPosition(21, 9);
+            Console.WriteLine(
+            @"*********Grade Manager Ver 2.0*********
+Keep track of your Classrooms
+Students and all grades
+1. Show ClassRooms.
+2. Add a ClassRoom.                  
+3. Remove a ClassRoom.                 
+4. ClassRoom Details Menu.           
+9. Exit App.");
+           
             string classRoomChoice = Console.ReadLine().ToUpper();
 
 
@@ -70,8 +70,7 @@ namespace Grade_Manager_OO
             {
                 foreach (KeyValuePair<string, ClassRoom> kvp in classRoomsDictionary)
                 {
-                    Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Classroom Name: {kvp.Value.name}                                          "));
-
+                    Console.WriteLine($"Classroom Name:" + kvp.Value.name);
                 }
             }
 
@@ -79,6 +78,7 @@ namespace Grade_Manager_OO
             {
                 Console.Clear();
                 WriteLineClassRoomDictionary();
+                Console.WriteLine("Press Enter to continue");
                 Console.ReadLine();
                 Menu();
             }
@@ -86,8 +86,8 @@ namespace Grade_Manager_OO
             static void AddClassRoom()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the classroom in which you would like to add."));
-                Console.SetCursorPosition(21, 9);
+                Console.WriteLine("Name the classroom in which you would like to add.");
+                
                 string classRoomName = Console.ReadLine().ToUpper();
                 classRoomsDictionary.Add(classRoomName, new ClassRoom(classRoomName));
                 Menu();
@@ -98,7 +98,7 @@ namespace Grade_Manager_OO
             static void ClassRoomDetailsSubMenu()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the ClassRoom name in which you would like edit"));
+                Console.WriteLine("Type the ClassRoom name in which you would like edit");
                 WriteLineClassRoomDictionary();
                 string classroomChoice = Console.ReadLine().ToUpper();
                 classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
@@ -107,8 +107,8 @@ namespace Grade_Manager_OO
             static void RemoveClassRoom()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the ClassRoom name in which you would like to remove."));
-                Console.SetCursorPosition(21, 9);
+                Console.WriteLine("Type the ClassRoom name in which you would like to remove.");
+                WriteLineClassRoomDictionary();
                 string classRoomName = Console.ReadLine().ToUpper();
                 classRoomsDictionary.Remove(classRoomName);
                 Menu();
@@ -117,8 +117,8 @@ namespace Grade_Manager_OO
             static void Exit()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Exit? Press 9 again"));
-                Console.SetCursorPosition(20, 20);
+                Console.WriteLine("Exit? Press 9 again");
+                
                 int answer = Convert.ToInt32(Console.ReadLine());
                 if (answer != 9)
                 {

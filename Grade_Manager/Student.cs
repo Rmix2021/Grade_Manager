@@ -33,25 +33,27 @@ namespace Grade_Manager_OO
         {
             foreach (KeyValuePair<string, Assignment> kvp in this.assignmentsDictionary)
             {
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Assignment Name: {kvp.Value.Name}                               "));
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Assignment Grade: {kvp.Value.Grade}                             "));
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Assignment Completion Status: {kvp.Value.CompletionStatus} +  /n"));
+                Console.WriteLine($"Assignment Name:" + kvp.Value.Name);
+                Console.WriteLine($"Assignment Grade:" + kvp.Value.Grade);
+                Console.WriteLine($"Assignment Completion Status:" + kvp.Value.CompletionStatus);
+                Console.WriteLine("");
             }
         }
 
         public void EditStudentDetailsMenu()
         {
             Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "******Edit Student Details Menu********"));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Currently Editing 'Student xyz'        "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "1. Show Student Summary.               "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "2. Assign Student New Assignment.      "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "3. Show Assignments.                   "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "4. Grade Assignments.                  "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "5. Show students Best Grade.           "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "6. Show students worst Grade.          "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "9. Exit this menu.                     "));
-            Console.SetCursorPosition(21, 10);
+            Console.WriteLine("******Edit Student Details Menu********");
+            Console.WriteLine("Currently Editing:" + this.StudentName);
+            Console.WriteLine(@"
+1. Show Student Summary.
+2. Assign Student New Assignment.
+3. Show Assignments.
+4. Grade Assignments.
+5. Show students Best Grade.
+6. Show students worst Grade.
+9. Exit this menu.");
+            
 
             string StudentDetailsChoice = Console.ReadLine().ToUpper();
             switch (StudentDetailsChoice)
@@ -121,12 +123,9 @@ namespace Grade_Manager_OO
         void AssignNewAssignment()
         {
             Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the assignment in which you would like to add."));
-            Console.SetCursorPosition(21, 9);
-
+            Console.WriteLine("Name the assignment in which you would like to add.");
             string assignmentName = Console.ReadLine().ToUpper();
             assignmentsDictionary.Add(assignmentName, new Assignment(assignmentName));
-
             EditStudentDetailsMenu();
         }
 
@@ -143,7 +142,7 @@ namespace Grade_Manager_OO
         void ShowStudentBestGrade()
         {
             Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", HighestGrade));
+            Console.WriteLine(HighestGrade);
             Console.ReadLine();
             EditStudentDetailsMenu();
         }
@@ -152,7 +151,7 @@ namespace Grade_Manager_OO
         void ShowStudentWorstGrade()
         {
             Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", LowestGrade));
+            Console.WriteLine(LowestGrade);
             Console.ReadLine();
             EditStudentDetailsMenu();
         }
@@ -160,10 +159,10 @@ namespace Grade_Manager_OO
         void GradeAssignments()
         {
             Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Assignment name in which you would like Grade"));
+            Console.WriteLine("Type the Assignment name in which you would like Grade");
             WriteLineAssignmentDictionary();
             string assignmentChoice = Console.ReadLine().ToUpper();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Enter this assignments Grade from 0.0 - 100"));
+            Console.WriteLine("Enter this assignment Grade from 0.0 - 100");
             double assignmentCurrentGrade = Convert.ToDouble(Console.ReadLine());
             assignmentsDictionary[assignmentChoice].Grade = assignmentCurrentGrade;
 
@@ -172,13 +171,16 @@ namespace Grade_Manager_OO
                 this.HighestGrade = assignmentCurrentGrade;
                 gradesListToAverageOut.Add(assignmentCurrentGrade);
                 this.Average = gradesListToAverageOut.Average();
-            }
+            } 
             else if (assignmentCurrentGrade < LowestGrade)
             {
                 this.LowestGrade = assignmentCurrentGrade;
                 gradesListToAverageOut.Add(assignmentCurrentGrade);
                 this.Average = gradesListToAverageOut.Average();
-
+            }
+            else
+            {
+                EditStudentDetailsMenu();
             }
             EditStudentDetailsMenu();
         }

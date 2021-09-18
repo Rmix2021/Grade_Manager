@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Grade_Manager_OO
 {
@@ -23,28 +25,26 @@ namespace Grade_Manager_OO
         {
             foreach (KeyValuePair<string, Student> kvp in this.studentDictionary)
             {
-                Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Student Name: {kvp.Value.StudentName}                                          "));
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Students Average: {kvp.Value.Average}                                          "));
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", $"Students Completion Status: {kvp.Value.AllAssignmentsCompleteTrueOrFalse} +  /n"));
+                Console.WriteLine($"Student Name:" + kvp.Value.StudentName);
+                Console.WriteLine($"Students Average:" + kvp.Value.Average);
+                Console.WriteLine($"Students Completion Status:" + kvp.Value.AllAssignmentsCompleteTrueOrFalse);
             }
         }
 
         public void ClassRoomDetailsMenu()
         {
             Console.Clear();
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "*********Edit Classrooms Menu**********"));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Currently Editing 'classroom xyz'      "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "1. Show Students.                      "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "2. Add Student.                        "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "3. Remove Student.                     "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "4. Student Details Menu.               "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "5. Show class average.                 "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "6. Show top student.                   "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "7. Show worst student.                 "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "8. Compare 2 students.                 "));
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "9. Exit this menu.                     "));
-            Console.SetCursorPosition(21, 12);
+            Console.WriteLine("*********Edit Classrooms Menu**********");
+            Console.WriteLine("Currently Editing " + this.name + " Class");
+            Console.WriteLine(@"1. Show Students.               
+2. Add Student.                        
+3. Remove Student.
+4. Student Details Menu.             
+5. Show class average.                 
+6. Show top student.                  
+7. Show worst student.                 
+8. Compare 2 students.                
+9. Exit this menu.");           
 
             string classRoomChoice = Console.ReadLine().ToUpper();
 
@@ -108,25 +108,24 @@ namespace Grade_Manager_OO
             {
                 Console.Clear();
                 WriteLineStudentDictionary();
-                Console.ReadLine().ToUpper();
+                Console.WriteLine("Press enter to continue.");                
+                Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
 
             void AddStudent()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Name the Student in which you would like to add."));
-                Console.SetCursorPosition(21, 9);
+                Console.WriteLine("Name the Student in which you would like to add.");                
                 string studentName = Console.ReadLine().ToUpper();
                 studentDictionary.Add(studentName, new Student(studentName));
-                Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
 
             void StudentDetailsMenu()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Student name in which you would like edit"));
+                Console.WriteLine("Type the Student name in which you would like edit");
                 WriteLineStudentDictionary();
                 string studentChoice = Console.ReadLine().ToUpper();
                 studentDictionary[studentChoice].EditStudentDetailsMenu();
@@ -135,8 +134,8 @@ namespace Grade_Manager_OO
             void RemoveStudent()
             {
                 Console.Clear();
-                Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "Type the Student name in which you would like to remove."));
-                Console.SetCursorPosition(21, 9);
+                Console.WriteLine("Type the Student name in which you would like to remove.");
+                WriteLineStudentDictionary();
                 string studentName = Console.ReadLine().ToUpper();
                 studentDictionary.Remove(studentName);
                 ClassRoomDetailsMenu();
@@ -146,21 +145,31 @@ namespace Grade_Manager_OO
             {
                 Console.Clear();
                 combineGradesList();
-                classGradesListToAverageOut.Average();
+                double averagedOutClassGrades = classGradesListToAverageOut.Average();
+                Console.WriteLine("The current class average is" + averagedOutClassGrades);
+                Console.WriteLine("Press enter to continue.");                
                 Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
 
             void ShowTopStudent()
             {
+                var max = studentDictionary.Max(average => average.Value);
                 Console.Clear();
+                Console.WriteLine("This is your best current student.");
+                Console.WriteLine(max.StudentName);               
+                Console.WriteLine("Press enter to continue.");                
                 Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
 
             void ShowBottomStudent()
             {
+                var min = studentDictionary.Min(average => average.Value);
                 Console.Clear();
+                Console.WriteLine("This is your best current student.");
+                Console.WriteLine(min.StudentName);
+                Console.WriteLine("Press enter to continue.");                
                 Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
@@ -168,6 +177,18 @@ namespace Grade_Manager_OO
             void Compare2Student()
             {
                 Console.Clear();
+                Console.WriteLine("Choose the 2 students you wish to compare.");
+                WriteLineStudentDictionary();
+                Console.WriteLine("Student 1.");                
+                string student1 = Console.ReadLine();
+                Console.WriteLine("Student 2.");
+                string student2 = Console.ReadLine();
+
+                Console.WriteLine("");
+                Console.WriteLine("");
+
+
+
                 Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
