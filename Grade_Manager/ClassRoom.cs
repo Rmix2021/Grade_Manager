@@ -180,12 +180,33 @@ namespace Grade_Manager_OO
                 Console.WriteLine("Choose the 2 students you wish to compare.");
                 WriteLineStudentDictionary();
                 Console.WriteLine("Student 1.");                
-                string student1 = Console.ReadLine();
+                string student1 = Console.ReadLine().ToUpper();
                 Console.WriteLine("Student 2.");
-                string student2 = Console.ReadLine();
+                string student2 = Console.ReadLine().ToUpper();
 
-                Console.WriteLine("");
-                Console.WriteLine("");
+                if (studentDictionary.ContainsKey(student1) && studentDictionary.ContainsKey(student2))
+                {
+                    Console.WriteLine("Student 1: " + studentDictionary[student1]);
+                    Console.WriteLine("");
+                    Console.WriteLine("Student 2: " + studentDictionary[student2]);
+                    Console.WriteLine("");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    ClassRoomDetailsMenu();
+                }
+
+
+
+                Console.WriteLine("Student 1 details:");
+                Console.WriteLine($"Student Name:" );
+                Console.WriteLine($"Students Average:");
+                Console.WriteLine($"Students Completion Status:");
+
+                Console.WriteLine("Student 2 details:");
 
 
 

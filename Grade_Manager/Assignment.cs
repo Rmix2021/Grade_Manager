@@ -20,10 +20,11 @@ namespace Grade_Manager_OO
             }
             set
             {
-                Grade = value;
+                _grade = value;
                 if (Grade >= 0)
                 {
                     CompletionStatus = true;
+                    
                 }
             }
         }
@@ -31,8 +32,5 @@ namespace Grade_Manager_OO
         {
             this.Name = assignmentName;
         }
-
-
-
     }
 }

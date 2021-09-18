@@ -77,20 +77,36 @@ Students and all grades
             static void ShowClassRooms()
             {
                 Console.Clear();
+                if(classRoomsDictionary == null)
+                {
+                    Console.WriteLine("There are no classrooms at the moment.");
+                    Console.WriteLine("Press enter to continue.");
+                    Console.ReadLine();
+                    Menu();
+                }
+                else
+                {
                 WriteLineClassRoomDictionary();
                 Console.WriteLine("Press Enter to continue");
                 Console.ReadLine();
                 Menu();
+                }
             }
 
             static void AddClassRoom()
             {
                 Console.Clear();
-                Console.WriteLine("Name the classroom in which you would like to add.");
-                
+                Console.WriteLine("Name the classroom in which you would like to add.");                
                 string classRoomName = Console.ReadLine().ToUpper();
+                if(classRoomName == null)
+                {
+                    Menu();
+                }
+                else 
+                { 
                 classRoomsDictionary.Add(classRoomName, new ClassRoom(classRoomName));
                 Menu();
+                }
 
 
             }
@@ -101,7 +117,14 @@ Students and all grades
                 Console.WriteLine("Type the ClassRoom name in which you would like edit");
                 WriteLineClassRoomDictionary();
                 string classroomChoice = Console.ReadLine().ToUpper();
-                classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
+                if(classRoomsDictionary.ContainsKey(classroomChoice) != true)
+                {
+                    Menu();
+                }
+                else
+                {
+                    classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
+                }
             }
 
             static void RemoveClassRoom()
@@ -110,7 +133,15 @@ Students and all grades
                 Console.WriteLine("Type the ClassRoom name in which you would like to remove.");
                 WriteLineClassRoomDictionary();
                 string classRoomName = Console.ReadLine().ToUpper();
-                classRoomsDictionary.Remove(classRoomName);
+                if (classRoomsDictionary.ContainsKey(classRoomName) != true)
+                {
+                    Menu();
+                }
+                else
+                {
+                    classRoomsDictionary.Remove(classRoomName);
+                }
+                
                 Menu();
             }
 

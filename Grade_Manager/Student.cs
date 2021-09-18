@@ -44,7 +44,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             Console.WriteLine("******Edit Student Details Menu********");
-            Console.WriteLine("Currently Editing:" + this.StudentName);
+            Console.WriteLine("Currently Editing: " + this.StudentName);
             Console.WriteLine(@"
 1. Show Student Summary.
 2. Assign Student New Assignment.
@@ -114,6 +114,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             WriteLineAssignmentDictionary();
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             EditStudentDetailsMenu();
 
@@ -134,6 +135,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             WriteLineAssignmentDictionary();
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             EditStudentDetailsMenu();
         }
@@ -143,6 +145,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             Console.WriteLine(HighestGrade);
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             EditStudentDetailsMenu();
         }
@@ -152,6 +155,7 @@ namespace Grade_Manager_OO
         {
             Console.Clear();
             Console.WriteLine(LowestGrade);
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             EditStudentDetailsMenu();
         }
@@ -163,25 +167,32 @@ namespace Grade_Manager_OO
             WriteLineAssignmentDictionary();
             string assignmentChoice = Console.ReadLine().ToUpper();
             Console.WriteLine("Enter this assignment Grade from 0.0 - 100");
-            double assignmentCurrentGrade = Convert.ToDouble(Console.ReadLine());
+            double assignmentCurrentGrade = double.Parse((Console.ReadLine()));
             assignmentsDictionary[assignmentChoice].Grade = assignmentCurrentGrade;
-
-            if (assignmentCurrentGrade > HighestGrade)
-            {
-                this.HighestGrade = assignmentCurrentGrade;
-                gradesListToAverageOut.Add(assignmentCurrentGrade);
-                this.Average = gradesListToAverageOut.Average();
-            } 
-            else if (assignmentCurrentGrade < LowestGrade)
-            {
-                this.LowestGrade = assignmentCurrentGrade;
-                gradesListToAverageOut.Add(assignmentCurrentGrade);
-                this.Average = gradesListToAverageOut.Average();
-            }
-            else
+            if (assignmentsDictionary == null)
             {
                 EditStudentDetailsMenu();
             }
+            else
+            {
+                if (assignmentCurrentGrade > HighestGrade)
+                {
+                    this.HighestGrade = assignmentCurrentGrade;
+                    gradesListToAverageOut.Add(assignmentCurrentGrade);
+                    this.Average = gradesListToAverageOut.Average();
+                }
+                else if (assignmentCurrentGrade < LowestGrade)
+                {
+                    this.LowestGrade = assignmentCurrentGrade;
+                    gradesListToAverageOut.Add(assignmentCurrentGrade);
+                    this.Average = gradesListToAverageOut.Average();
+                }
+                else
+                {
+                    EditStudentDetailsMenu();
+                }
+            }
+
             EditStudentDetailsMenu();
         }
     }
