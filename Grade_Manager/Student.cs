@@ -225,12 +225,32 @@ namespace Grade_Manager_OO
                     this.HighestGrade = assignmentCurrentGrade;
                     gradesListToAverageOut.Add(assignmentCurrentGrade);
                     this.Average = gradesListToAverageOut.Average();
+                    if(gradesListToAverageOut.Count == assignmentsDictionary.Count)
+                    {
+                        this.AllAssignmentsCompleteTrueOrFalse = true;
+                        EditStudentDetailsMenu();
+                    }
+                    else
+                    {
+                        this.AllAssignmentsCompleteTrueOrFalse = false;
+                        EditStudentDetailsMenu();
+                    }
                 }
                 else if (assignmentCurrentGrade < LowestGrade)
                 {
                     this.LowestGrade = assignmentCurrentGrade;
                     gradesListToAverageOut.Add(assignmentCurrentGrade);
                     this.Average = gradesListToAverageOut.Average();
+                    if (gradesListToAverageOut.Count == assignmentsDictionary.Count)
+                    {
+                        this.AllAssignmentsCompleteTrueOrFalse = true;
+                        EditStudentDetailsMenu();
+                    }
+                    else
+                    {
+                        this.AllAssignmentsCompleteTrueOrFalse = false;
+                        EditStudentDetailsMenu();
+                    }
                 }
                 else
                 {
@@ -256,5 +276,6 @@ namespace Grade_Manager_OO
                 EditStudentDetailsMenu();
             }
         }
+
     }
 }
