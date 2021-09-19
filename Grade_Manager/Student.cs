@@ -12,14 +12,17 @@ namespace Grade_Manager_OO
 
         public double Average { get; set; }
 
-        public bool AllAssignmentsCompleteTrueOrFalse { get; set; } = false;
+        public bool AllAssignmentsCompleteTrueOrFalse = false;       
 
         public double HighestGrade { get; set; } = 0;
 
         public double LowestGrade { get; set; } = 0;
 
+
         public Dictionary<string, Assignment> assignmentsDictionary = new Dictionary<string, Assignment>();
 
+
+        public List<double> gradesListToAverageOut = new List<double>();
 
         public Student(string namedStudent)
         {
@@ -27,7 +30,6 @@ namespace Grade_Manager_OO
             this.Average = 0;
         }
 
-        public List<double> gradesListToAverageOut = new List<double>();
 
         void WriteLineAssignmentDictionary()
         {
@@ -35,7 +37,7 @@ namespace Grade_Manager_OO
             {
                 Console.WriteLine($"Assignment Name:" + kvp.Value.Name);
                 Console.WriteLine($"Assignment Grade:" + kvp.Value.Grade);
-                Console.WriteLine($"Assignment Completion Status:" + kvp.Value.CompletionStatus);
+                Console.WriteLine($"Assignment complete?:" + kvp.Value.CompletionStatus);
                 Console.WriteLine("");
             }
         }
@@ -211,55 +213,40 @@ namespace Grade_Manager_OO
             Console.WriteLine("Type the Assignment name in which you would like Grade");
             WriteLineAssignmentDictionary();
             string assignmentChoice = Console.ReadLine().ToUpper();
-            Console.WriteLine("Enter this assignment Grade from 0.0 - 100");
-            double assignmentCurrentGrade = double.Parse((Console.ReadLine()));
-            assignmentsDictionary[assignmentChoice].Grade = assignmentCurrentGrade;
-            if (assignmentsDictionary == null)
-            {
-                EditStudentDetailsMenu();
-            }
-            else
-            {
-                if (assignmentCurrentGrade > HighestGrade)
-                {
-                    this.HighestGrade = assignmentCurrentGrade;
-                    gradesListToAverageOut.Add(assignmentCurrentGrade);
-                    this.Average = gradesListToAverageOut.Average();
-                    if(gradesListToAverageOut.Count == assignmentsDictionary.Count)
-                    {
-                        this.AllAssignmentsCompleteTrueOrFalse = true;
-                        EditStudentDetailsMenu();
-                    }
-                    else
-                    {
-                        this.AllAssignmentsCompleteTrueOrFalse = false;
-                        EditStudentDetailsMenu();
-                    }
-                }
-                else if (assignmentCurrentGrade < LowestGrade)
-                {
-                    this.LowestGrade = assignmentCurrentGrade;
-                    gradesListToAverageOut.Add(assignmentCurrentGrade);
-                    this.Average = gradesListToAverageOut.Average();
-                    if (gradesListToAverageOut.Count == assignmentsDictionary.Count)
-                    {
-                        this.AllAssignmentsCompleteTrueOrFalse = true;
-                        EditStudentDetailsMenu();
-                    }
-                    else
-                    {
-                        this.AllAssignmentsCompleteTrueOrFalse = false;
-                        EditStudentDetailsMenu();
-                    }
-                }
-                else
+          
+                Console.WriteLine("Enter this assignment Grade from 0.0 - 100");
+                double assignmentCurrentGrade = double.Parse((Console.ReadLine()));
+                assignmentsDictionary[assignmentChoice].Grade = assignmentCurrentGrade;
+                if (assignmentsDictionary == null)
                 {
                     EditStudentDetailsMenu();
                 }
+                else
+                {
+                    if (assignmentCurrentGrade > HighestGrade)
+                    {
+                        this.HighestGrade = assignmentCurrentGrade;
+                        gradesListToAverageOut.Add(assignmentCurrentGrade);
+                        this.Average = gradesListToAverageOut.Average();
+                   
+                    }
+                    else if (assignmentCurrentGrade < LowestGrade)
+                    {
+                        this.LowestGrade = assignmentCurrentGrade;
+                        gradesListToAverageOut.Add(assignmentCurrentGrade);
+                        this.Average = gradesListToAverageOut.Average();                
+                    }
+                    else
+                    {
+                        EditStudentDetailsMenu();
+                    }
+                }
+                EditStudentDetailsMenu();
             }
+          
+            
 
-            EditStudentDetailsMenu();
-        }
+        
 
         void ShowStudentAverage()
         {

@@ -16,6 +16,8 @@ namespace Grade_Manager_OO
         }
 
         public static Dictionary<string, ClassRoom> classRoomsDictionary = new Dictionary<string, ClassRoom>();
+
+        public string classroomChoice;
         public static void Menu()
         {
             Console.Clear();
@@ -112,12 +114,13 @@ Students and all grades
 
             }
 
-            static void ClassRoomDetailsSubMenu()
+            static string ClassRoomDetailsSubMenu()
             {
                 Console.Clear();
                 if(classRoomsDictionary == null )
                 {
                     Menu();
+                    return null;
                 }
                 else
                 {
@@ -127,10 +130,12 @@ Students and all grades
                     if(classRoomsDictionary.ContainsKey(classroomChoice) != true)
                     {
                         Menu();
+                        return null;
                     }
                     else
                     {
                         classRoomsDictionary[classroomChoice].ClassRoomDetailsMenu();
+                        return classroomChoice;
                     }
                 }
             }

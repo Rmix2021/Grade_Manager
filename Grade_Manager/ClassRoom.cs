@@ -16,6 +16,7 @@ namespace Grade_Manager_OO
 
         public List<double> classGradesListToAverageOut = new List<double>();
 
+        public string studentChoice;
         public ClassRoom(string classRoomName)
         {
             this.name = classRoomName.ToUpper();
@@ -27,7 +28,7 @@ namespace Grade_Manager_OO
             {
                 Console.WriteLine($"Student Name:" + kvp.Value.StudentName);
                 Console.WriteLine($"Students Average:" + kvp.Value.Average);
-                Console.WriteLine($"Students Completion Status:" + kvp.Value.AllAssignmentsCompleteTrueOrFalse);
+                Console.WriteLine($"Students all assignments complete?: " + kvp.Value.AllAssignmentsCompleteTrueOrFalse);
                 Console.WriteLine("");
             }
         }
@@ -137,12 +138,13 @@ namespace Grade_Manager_OO
                 }
             }
 
-            void StudentDetailsMenu()
+            string StudentDetailsMenu()
             {
                 Console.Clear();
                 if(this.studentDictionary == null)
                 {
                     ClassRoomDetailsMenu();
+                    return null;
                 }
                 else
                 {
@@ -152,10 +154,12 @@ namespace Grade_Manager_OO
                     if(studentDictionary.ContainsKey(studentChoice) != true)
                     {
                         ClassRoomDetailsMenu();
+                        return studentChoice;
                     }
                     else
                     {
                         studentDictionary[studentChoice].EditStudentDetailsMenu();
+                        return studentChoice;
                     }
                 }
             }
@@ -194,7 +198,7 @@ namespace Grade_Manager_OO
                 {
                     combineGradesList();
                     double averagedOutClassGrades = classGradesListToAverageOut.Average();
-                    Console.WriteLine("The current class average is" + averagedOutClassGrades);
+                    Console.WriteLine("The current class average is: " + averagedOutClassGrades);
                     Console.WriteLine("Press enter to continue.");                
                     Console.ReadLine();
                     ClassRoomDetailsMenu();
@@ -253,9 +257,13 @@ namespace Grade_Manager_OO
 
                 if (studentDictionary.ContainsKey(student1) && studentDictionary.ContainsKey(student2))
                 {
-                    Console.WriteLine("Student 1: " + studentDictionary[student1]);
+                    Console.WriteLine("Student 1 name: " + studentDictionary[student1].StudentName);
+                    Console.WriteLine("Student 1 average: " + studentDictionary[student1].Average);
+                    Console.WriteLine("Student 1 all assignments finished?: " + studentDictionary[student1].AllAssignmentsCompleteTrueOrFalse);
                     Console.WriteLine("");
-                    Console.WriteLine("Student 2: " + studentDictionary[student2]);
+                    Console.WriteLine("Student 2: " + studentDictionary[student2].StudentName);
+                    Console.WriteLine("Student 2 average: " + studentDictionary[student2].Average);
+                    Console.WriteLine("Student 2 all assignments finished?: " + studentDictionary[student2].AllAssignmentsCompleteTrueOrFalse);
                     Console.WriteLine("");
                     Console.WriteLine("Press enter to continue.");
                     Console.ReadLine();
@@ -265,18 +273,7 @@ namespace Grade_Manager_OO
                 {
                     ClassRoomDetailsMenu();
                 }
-
-
-
-                Console.WriteLine("Student 1 details:");
-                Console.WriteLine($"Student Name:" );
-                Console.WriteLine($"Students Average:");
-                Console.WriteLine($"Students Completion Status:");
-
-                Console.WriteLine("Student 2 details:");
-
-
-
+                Console.WriteLine("Press enter to continue.");
                 Console.ReadLine();
                 ClassRoomDetailsMenu();
             }
