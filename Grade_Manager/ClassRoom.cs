@@ -28,6 +28,7 @@ namespace Grade_Manager_OO
                 Console.WriteLine($"Student Name:" + kvp.Value.StudentName);
                 Console.WriteLine($"Students Average:" + kvp.Value.Average);
                 Console.WriteLine($"Students Completion Status:" + kvp.Value.AllAssignmentsCompleteTrueOrFalse);
+                Console.WriteLine("");
             }
         }
 
@@ -93,7 +94,7 @@ namespace Grade_Manager_OO
                     }
 
                 case "8":
-                    Compare2Student();
+                    Compare2Students();
                     {
                         break;
                     }
@@ -107,7 +108,7 @@ namespace Grade_Manager_OO
             void ShowStudents()
             {
                 Console.Clear();
-                if (studentDictionary == null)
+                if (this.studentDictionary == null)
                 {
                     ClassRoomDetailsMenu();
                 }
@@ -125,14 +126,21 @@ namespace Grade_Manager_OO
                 Console.Clear();
                 Console.WriteLine("Name the Student in which you would like to add.");                
                 string studentName = Console.ReadLine().ToUpper();
-                studentDictionary.Add(studentName, new Student(studentName));
-                ClassRoomDetailsMenu();
+                if(string.IsNullOrWhiteSpace(studentName) || studentDictionary.ContainsKey(studentName) == true)
+                {
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    studentDictionary.Add(studentName, new Student(studentName));
+                    ClassRoomDetailsMenu();
+                }
             }
 
             void StudentDetailsMenu()
             {
                 Console.Clear();
-                if(studentDictionary == null)
+                if(this.studentDictionary == null)
                 {
                     ClassRoomDetailsMenu();
                 }
@@ -155,7 +163,7 @@ namespace Grade_Manager_OO
             void RemoveStudent()
             {
                 Console.Clear();
-                if(studentDictionary == null)
+                if(this.studentDictionary == null)
                 {
                     ClassRoomDetailsMenu();
                 }
@@ -164,7 +172,7 @@ namespace Grade_Manager_OO
                     Console.WriteLine("Type the Student name in which you would like to remove.");
                     WriteLineStudentDictionary();
                     string studentName = Console.ReadLine().ToUpper();
-                    if (studentDictionary.ContainsKey(studentName))
+                    if (studentDictionary.ContainsKey(studentName) != true)
                     {
                         ClassRoomDetailsMenu();
                     }
@@ -172,26 +180,32 @@ namespace Grade_Manager_OO
                     {
                         studentDictionary.Remove(studentName);
                     }
-
                 }
             }
 
             void ShowClassAverage()
             {
                 Console.Clear();
-                combineGradesList();
-                double averagedOutClassGrades = classGradesListToAverageOut.Average();
-                Console.WriteLine("The current class average is" + averagedOutClassGrades);
-                Console.WriteLine("Press enter to continue.");                
-                Console.ReadLine();
-                ClassRoomDetailsMenu();
+                if(this.studentDictionary == null)
+                {
+                    ClassRoomDetailsMenu();
+                }
+                else
+                {
+                    combineGradesList();
+                    double averagedOutClassGrades = classGradesListToAverageOut.Average();
+                    Console.WriteLine("The current class average is" + averagedOutClassGrades);
+                    Console.WriteLine("Press enter to continue.");                
+                    Console.ReadLine();
+                    ClassRoomDetailsMenu();
+                }
             }
 
             void ShowTopStudent()
             {
                 Console.Clear();
                 var max = studentDictionary.Max(average => average.Value);
-                if(studentDictionary == null)
+                if(this.studentDictionary == null)
                 {
                     Console.WriteLine("There are no students yet.");
                     Console.WriteLine("Press enter to continue.");
@@ -210,7 +224,7 @@ namespace Grade_Manager_OO
             void ShowBottomStudent()
             {
                 Console.Clear();
-                var min = studentDictionary.Min(average => average.Value);
+                var min = this.studentDictionary.Min(average => average.Value);
                 if(studentDictionary == null)
                 {
                     Console.WriteLine("There are no students yet.");
@@ -227,7 +241,7 @@ namespace Grade_Manager_OO
                 }
             }
 
-            void Compare2Student()
+            void Compare2Students()
             {
                 Console.Clear();
                 Console.WriteLine("Choose the 2 students you wish to compare.");

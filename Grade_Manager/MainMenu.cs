@@ -71,6 +71,7 @@ Students and all grades
                 foreach (KeyValuePair<string, ClassRoom> kvp in classRoomsDictionary)
                 {
                     Console.WriteLine($"Classroom Name:" + kvp.Value.name);
+                    Console.WriteLine("");
                 }
             }
 
@@ -98,7 +99,7 @@ Students and all grades
                 Console.Clear();
                 Console.WriteLine("Name the classroom in which you would like to add.");                
                 string classRoomName = Console.ReadLine().ToUpper();
-                if(classRoomName == null)
+                if(string.IsNullOrWhiteSpace(classRoomName) || classRoomsDictionary.ContainsKey(classRoomName) == true)
                 {
                     Menu();
                 }
@@ -114,7 +115,7 @@ Students and all grades
             static void ClassRoomDetailsSubMenu()
             {
                 Console.Clear();
-                if(classRoomsDictionary == null)
+                if(classRoomsDictionary == null )
                 {
                     Menu();
                 }
@@ -157,8 +158,8 @@ Students and all grades
                 Console.Clear();
                 Console.WriteLine("Exit? Press 9 again");
                 
-                int answer = Convert.ToInt32(Console.ReadLine());
-                if (answer != 9)
+                string answer = Console.ReadLine();
+                if (answer != "9")
                 {
                     Menu();
                 }

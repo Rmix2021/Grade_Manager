@@ -52,6 +52,7 @@ namespace Grade_Manager_OO
 4. Grade Assignments.
 5. Show students Best Grade.
 6. Show students worst Grade.
+7. Show students current averaqge.
 9. Exit this menu.");
             
 
@@ -93,6 +94,12 @@ namespace Grade_Manager_OO
                     {
                         break;
                     }
+                case "7":
+                    ShowStudentAverage();
+                    {
+                        break;
+                    }
+
 
 
                 case "9":
@@ -113,10 +120,20 @@ namespace Grade_Manager_OO
         void ShowStudentSummary()
         {
             Console.Clear();
-            WriteLineAssignmentDictionary();
-            Console.WriteLine("Press Enter to continue.");
-            Console.ReadLine();
-            EditStudentDetailsMenu();
+            if(this.assignmentsDictionary == null)
+            {
+                Console.WriteLine("This student does not have any assignments.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                EditStudentDetailsMenu();
+            }
+            else
+            {
+                WriteLineAssignmentDictionary();
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                EditStudentDetailsMenu();
+            }
 
         }
 
@@ -126,38 +143,66 @@ namespace Grade_Manager_OO
             Console.Clear();
             Console.WriteLine("Name the assignment in which you would like to add.");
             string assignmentName = Console.ReadLine().ToUpper();
-            assignmentsDictionary.Add(assignmentName, new Assignment(assignmentName));
-            EditStudentDetailsMenu();
+            if (string.IsNullOrWhiteSpace(assignmentName) || assignmentsDictionary.ContainsKey(assignmentName) == true)
+            {
+                EditStudentDetailsMenu();
+            }
+            else
+            {
+                assignmentsDictionary.Add(assignmentName, new Assignment(assignmentName));
+                EditStudentDetailsMenu();
+            }
         }
 
 
         void ShowAssignments()
         {
             Console.Clear();
-            WriteLineAssignmentDictionary();
-            Console.WriteLine("Press Enter to continue.");
-            Console.ReadLine();
-            EditStudentDetailsMenu();
+            if(this.assignmentsDictionary == null)
+            {
+                EditStudentDetailsMenu();
+            }
+            else
+            {
+                WriteLineAssignmentDictionary();
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                EditStudentDetailsMenu();
+            }
         }
 
 
         void ShowStudentBestGrade()
         {
             Console.Clear();
-            Console.WriteLine(HighestGrade);
-            Console.WriteLine("Press Enter to continue.");
-            Console.ReadLine();
-            EditStudentDetailsMenu();
+            if(this.assignmentsDictionary == null)
+            {
+                EditStudentDetailsMenu();
+            }
+            else
+            {
+                Console.WriteLine(HighestGrade);
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                EditStudentDetailsMenu();
+            }
         }
 
 
         void ShowStudentWorstGrade()
         {
-            Console.Clear();
-            Console.WriteLine(LowestGrade);
-            Console.WriteLine("Press Enter to continue.");
-            Console.ReadLine();
-            EditStudentDetailsMenu();
+            if(this.assignmentsDictionary == null)
+            {
+                EditStudentDetailsMenu();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine(LowestGrade);
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                EditStudentDetailsMenu();
+            }
         }
 
         void GradeAssignments()
@@ -194,6 +239,22 @@ namespace Grade_Manager_OO
             }
 
             EditStudentDetailsMenu();
+        }
+
+        void ShowStudentAverage()
+        {
+            Console.Clear();
+            if(this.assignmentsDictionary == null)
+            {
+                EditStudentDetailsMenu();
+            }
+            else
+            {
+                Console.WriteLine(this.StudentName + " Current grade average is : " + this.Average);
+                Console.WriteLine("Press enter to continue.");
+                Console.ReadLine();
+                EditStudentDetailsMenu();
+            }
         }
     }
 }
