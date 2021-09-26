@@ -1,43 +1,25 @@
 ﻿@page
-@model Grade_Manager_Razor.Pages.StudentsModel
+@model Grade_Manager_Razor.Pages.StudentsModel;
 @{
     ViewData["Title"] = "Students";
 }
 
+<h1>@ViewData["Title"]</h1>
+
+
 <div>
-    <h1>@ViewData["Title"]</h1>
-    <form>
-        <label for="studentName">Student Name:</label>
-        <input type="text" id="sName" name="sName" value="Student to Add">
-        <input type="submit" value="Submit">
-    </form>
-
-    <table>
-        <tr>
-            <td>John</td>
-            <td><button> Edit </button><button> Remove </button></td>
-        </tr>
-
-        <tr>
-            <td>Bob</td>
-            <td><button> Edit </button><button> Remove </button></td>
-        </tr>
-
-        <tr>
-            <td>Joe</td>
-            <td><button> Edit </button><button> Remove </button></td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td>This Class best Student: </td>
-            <td>Joe</td>
-        </tr>
-        <tr>
-            <td> This Class worst Student: </td>
-            <td> Bob </td>
-        </tr>
-    </table>
+    <div>
+        <ol>
+            <li>
+                <a href="\Students\ShowAllStudents"> Show Students</a>
+            </li>
+            <li>
+                <a href="\Students\AddStudent"> Add Students </a>
+            </li>
+        </ol>
+    </div>
 
 
 </div>
+
+

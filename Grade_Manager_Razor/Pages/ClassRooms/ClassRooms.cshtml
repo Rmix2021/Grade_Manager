@@ -4,30 +4,22 @@
     ViewData["Title"] = "ClassRooms";
 }
 
+<h1>@ViewData["Title"]</h1>
+
+
+
 <div>
-    <h2>ClassRooms</h2>
-    <form>
-    <label for="className">ClassRoom Name:</label>
-    <input type="text" id="clName" name="clName" value="Class to Add">
-    <input type="submit" value="Submit">
-    </form>
-
-    <table>
-        <tr>
-            <td>C#</td>
-            <td><button> Edit </button><button> Remove </button></td>
-        </tr>
-
-        <tr>
-            <td>Asp.Net</td>
-            <td><button> Edit </button><button> Remove </button></td>
-        </tr>
-
-        <tr>
-            <td>Angular</td>
-            <td><button> Edit </button><button> Remove </button></td>
-        </tr>
-    </table>
+    <div>
+        <ol>
+            <li>
+                <a href="\ClassRooms\ShowAllClassRooms"> Show Classrooms</a>
+            </li>
+            <li>
+                <a href="\ClassRooms\AddClassRoom"> Add ClassRooms </a>
+            </li>
+        </ol>
+    </div>
 
 
 </div>
+

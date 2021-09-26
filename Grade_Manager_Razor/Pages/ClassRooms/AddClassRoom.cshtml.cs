@@ -6,29 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Grade_Manager_Razor.Pages
+namespace Grade_Manager_Razor.Pages.ClassRooms
 {
-    
-    public class AssignmentsModel : PageModel
-    {       
+    public class AddClassRoomModel : PageModel
+    {
 
-        private readonly ILogger<AssignmentsModel> _logger;
+        [BindProperty]
+        public ClassRoom ClassRooms { get; set; }
 
-        public AssignmentsModel(ILogger<AssignmentsModel> logger)
+        private readonly ILogger<AddClassRoomModel> _logger;
+
+        public AddClassRoomModel(ILogger<AddClassRoomModel> logger)
         {
             _logger = logger;
         }
         public void OnGet()
         {
         }
-
-        public void onPost()
+        public void OnPost()
         {
-
         }
     }
 }
-
-
-
-
