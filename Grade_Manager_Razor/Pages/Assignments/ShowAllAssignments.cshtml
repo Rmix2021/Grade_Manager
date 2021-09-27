@@ -10,15 +10,21 @@
     <table>
         <thead>
             <tr>
-                <td>Assignment Name</td><td>Complete?</td>
+                <td>Assignment Name</td>
+                <td>Complete?</td>
             </tr>
         </thead>
-        @foreach(KeyValuePair<string, Assignment> item in Model.AssignmentsDictionary)
-            {
-                <tr>
-                    <td>@item.Value.Name</td><td>@item.Value.IsComplete</td>
-                </tr>
-            }
+        @foreach (KeyValuePair<string, Assignment> item in Model.AssignmentsDictionary)
+        {
+            <tr>
+                <td>@item.Value.Name</td>
+                <td>@item.Value.IsComplete</td>
+                <td><button onclick="window.location.href='/Assignments/EditAssignmentDetails';">Edit</button></td>
+                <td><button onclick="window.location.href='/Assignments/RemoveAssignment';">Remove</button></td>
+                <td><button onclick="window.location.href='/Assignments/GradeAssignment';">Grade</button></td>
+            </tr>
+        }
     </table>
 
 </div>
+

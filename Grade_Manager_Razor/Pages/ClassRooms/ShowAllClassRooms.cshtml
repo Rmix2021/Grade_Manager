@@ -16,7 +16,7 @@
         @foreach (KeyValuePair<string, ClassRoom> item in Model.ClassRoomDictionary)
         {
             <tr>
-                <td>@item.Value.Name</td>                
+                <td>@item.Value.Name</td><td><button>Edit</button></td><td><button>Remove</button></td>              
             </tr>
         }
     </table>
