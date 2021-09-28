@@ -13,7 +13,7 @@
                 <td>Student Name</td>
             </tr>
         </thead>
-        @foreach(KeyValuePair<string, Student> item in Model.StudentDictionary)
+        @*@foreach(KeyValuePair<string, Student> item in Model.StudentDictionary)
             {
     <tr>
         <td>@item.Value.Name</td>
@@ -22,6 +22,6 @@
         <td><button onclick="window.location.href='/Students/ShowBestGrade';">Show Best Grade</button></td>
         <td><button onclick="window.location.href='/Students/ShowWorstGrade';">Show Worst Grade</button></td>
     </tr>
-            }
+            }*@
     </table>
 </div>

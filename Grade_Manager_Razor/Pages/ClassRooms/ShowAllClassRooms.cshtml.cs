@@ -18,10 +18,6 @@ namespace Grade_Manager_Razor.Pages.ClassRooms
         {
             _logger = logger;
 
-            this.ClassRoomDictionary = new Dictionary<string, ClassRoom>();
-            this.ClassRoomDictionary.Add("ClassRoom1", new ClassRoom() { Name = "C#" });
-            this.ClassRoomDictionary.Add("ClassRoom2", new ClassRoom() { Name = "ASP.Net" });
-            this.ClassRoomDictionary.Add("ClassRoom3", new ClassRoom() { Name = "Entity FrameWork" });
 
         }
 

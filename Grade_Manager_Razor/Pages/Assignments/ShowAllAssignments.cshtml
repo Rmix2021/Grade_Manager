@@ -14,7 +14,7 @@
                 <td>Complete?</td>
             </tr>
         </thead>
-        @foreach (KeyValuePair<string, Assignment> item in Model.AssignmentsDictionary)
+        @*@foreach (KeyValuePair<string, Assignment> item in Model.AssignmentsDictionary)
         {
             <tr>
                 <td>@item.Value.Name</td>
@@ -23,7 +23,7 @@
                 <td><button onclick="window.location.href='/Assignments/RemoveAssignment';">Remove</button></td>
                 <td><button onclick="window.location.href='/Assignments/GradeAssignment';">Grade</button></td>
             </tr>
-        }
+        }*@
     </table>
 
 </div>

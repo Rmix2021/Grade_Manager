@@ -11,7 +11,7 @@ namespace Grade_Manager_Razor.Pages.Assignments
 {
     public class ShowAllAssignmentsModel : PageModel
     {
-        public Dictionary<string, Assignment> AssignmentsDictionary { get; set; }
+        
 
        
 
@@ -20,10 +20,7 @@ namespace Grade_Manager_Razor.Pages.Assignments
         public ShowAllAssignmentsModel(ILogger<ShowAllAssignmentsModel> logger)
         {
             _logger = logger;
-            this.AssignmentsDictionary = new Dictionary<string, Assignment>();
-            this.AssignmentsDictionary.Add("Assignment1", new Assignment() { Name = "Grade Manager", IsComplete = true });
-            this.AssignmentsDictionary.Add("Assignment2", new Assignment() { Name = "Grade Manger OOP", IsComplete = true });
-            this.AssignmentsDictionary.Add("Assignment3", new Assignment() { Name = "Grade Manger Razor Edition", IsComplete = false });
+           
         }
         public void OnGet()
         {

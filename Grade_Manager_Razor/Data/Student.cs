@@ -9,7 +9,7 @@ namespace Grade_Manager_Razor
     {
         public int StudentId { get; set; }
         public string Name { get; set; }
-        public Assignment Assignment { get; set; }
+        public Assignment Assignments {get; set; }
        
     }
 }
