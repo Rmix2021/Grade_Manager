@@ -1,3 +1,4 @@
+using Grade_Manager_Razor.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Grade_Manager_Razor
 {
@@ -24,6 +26,9 @@ namespace Grade_Manager_Razor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            // Add framework services.
+            services.AddDbContext<GradeManagerDbContext>(options =>options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddIdentity<User>().AddEntityFrameworkStores<GradeManagerDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
