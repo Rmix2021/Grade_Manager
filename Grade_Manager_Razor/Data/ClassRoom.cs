@@ -7,7 +7,10 @@ namespace Grade_Manager_Razor
 {
     public class ClassRoom
     {
+        public int ClassRoomId { get; set; }
         public string Name { get; set; }      
+        
+        public Student Student { get; set; }
       
     }
 }

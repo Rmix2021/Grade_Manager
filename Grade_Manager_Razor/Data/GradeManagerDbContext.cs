@@ -13,5 +13,11 @@ namespace Grade_Manager_Razor.Data
            : base(options)
         {
         }
+
+        public DbSet<Assignment> Assignments { get; set; }
+
+        public DbSet<Student> Students { get; set; }
+
+        public DbSet<ClassRoom> ClassRooms { get; set; }
     }
 }
