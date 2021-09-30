@@ -11,8 +11,9 @@ namespace Grade_Manager_Razor.Pages.ClassRooms
     public class AddClassRoomModel : PageModel
     {
 
-        [BindProperty]
-        public ClassRoom ClassRooms { get; set; }
+        //[BindProperty]
+        //public AddClassRoomCommand Input { get; set; }
+        //private readonly 
 
         private readonly ILogger<AddClassRoomModel> _logger;
 
