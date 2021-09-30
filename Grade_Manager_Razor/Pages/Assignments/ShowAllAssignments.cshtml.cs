@@ -10,10 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace Grade_Manager_Razor.Pages.Assignments
 {
     public class ShowAllAssignmentsModel : PageModel
-    {
-        
-
-       
+    {       
 
         private readonly ILogger<ShowAllAssignmentsModel> _logger;
 

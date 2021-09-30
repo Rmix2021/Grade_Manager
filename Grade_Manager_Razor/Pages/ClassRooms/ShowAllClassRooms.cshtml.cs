@@ -5,28 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Grade_Manager_Razor.Models;
 
 namespace Grade_Manager_Razor.Pages.ClassRooms
 {
     public class ShowAllClassRoomsModel : PageModel
     {
-        public Dictionary<string, ClassRoom> ClassRoomDictionary { get; set; }
+        public DisplayClassRoomsViewModel ClassRoom { get; set; }
+        private readonly ClassRoomService _service;
 
-        private readonly ILogger<ShowAllClassRoomsModel> _logger;
-
-        public ShowAllClassRoomsModel(ILogger<ShowAllClassRoomsModel> logger)
+        public ShowAllClassRoomsModel(ClassRoomService service)
         {
-            _logger = logger;
-
-
+            _service = service;
         }
 
-        public void OnGet()
-        {
-        }
+       
 
-        public void OnPost()
+        public async Task<IActionResult> onPostDeleteAsync(int id)
         {
+            await _service.DeleteClassRoom(id);
+            return RedirectToPage("/Index");
         }
         
     }

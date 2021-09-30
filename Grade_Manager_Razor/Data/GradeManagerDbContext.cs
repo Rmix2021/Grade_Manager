@@ -22,22 +22,22 @@ namespace Grade_Manager_Razor.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            
+
             modelBuilder.Entity<ClassRoom>().HasData
             (
-                
+
                 new ClassRoom
                 {
                     ClassRoomId = 1,
                     Name = "C#",
-                   
+
                 },
                 new ClassRoom
                 {
                     ClassRoomId = 2,
                     Name = "Java"
                 }
-               
+
             );
 
             modelBuilder.Entity<Student>().HasData
@@ -59,7 +59,7 @@ namespace Grade_Manager_Razor.Data
                     StudentId = 3,
                     Name = "Steven",
                     ClassRoomId = 1
-                }               
+                }
                 );
 
             modelBuilder.Entity<Assignment>().HasData
@@ -97,7 +97,7 @@ namespace Grade_Manager_Razor.Data
                     StudentId = 1
                 }
                 );
-                
+
         }
 
         public DbSet<Assignment> Assignments { get; set; }

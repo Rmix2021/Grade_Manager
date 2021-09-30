@@ -2,15 +2,17 @@
 using Grade_Manager_Razor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Grade_Manager_Razor.Migrations
 {
     [DbContext(typeof(GradeManagerDbContext))]
-    partial class GradeManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210930213803_InitialGet")]
+    partial class InitialGet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

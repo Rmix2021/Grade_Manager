@@ -5,21 +5,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Grade_Manager_Razor.Models;
 
 namespace Grade_Manager_Razor.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ClassRoomService _service;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IEnumerable<DisplayClassRoomsViewModel> ClassRooms { get; set; }
+
+        public IndexModel(ClassRoomService service)
         {
-            _logger = logger;
+            _service = service;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-
+            ClassRooms = await _service.GetClassRooms();
         }
     }
 }

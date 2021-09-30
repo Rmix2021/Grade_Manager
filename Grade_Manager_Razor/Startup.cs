@@ -29,6 +29,7 @@ namespace Grade_Manager_Razor
             // Add framework services.
             services.AddDbContext<GradeManagerDbContext>(options =>options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddIdentity<User>().AddEntityFrameworkStores<GradeManagerDbContext>().AddDefaultTokenProviders();
+            services.AddScoped<ClassRoomService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

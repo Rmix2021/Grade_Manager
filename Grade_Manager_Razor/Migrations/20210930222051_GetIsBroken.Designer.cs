@@ -2,15 +2,17 @@
 using Grade_Manager_Razor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Grade_Manager_Razor.Migrations
 {
     [DbContext(typeof(GradeManagerDbContext))]
-    partial class GradeManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210930222051_GetIsBroken")]
+    partial class GetIsBroken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,40 +45,6 @@ namespace Grade_Manager_Razor.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("Assignments");
-
-                    b.HasData(
-                        new
-                        {
-                            AssignmentId = 1,
-                            Grade = 0.0,
-                            IsComplete = false,
-                            Name = "Lab_1",
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            AssignmentId = 2,
-                            Grade = 0.0,
-                            IsComplete = false,
-                            Name = "Lab_2",
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            AssignmentId = 3,
-                            Grade = 0.0,
-                            IsComplete = false,
-                            Name = "Lab_3",
-                            StudentId = 1
-                        },
-                        new
-                        {
-                            AssignmentId = 4,
-                            Grade = 0.0,
-                            IsComplete = false,
-                            Name = "Lab_4",
-                            StudentId = 1
-                        });
                 });
 
             modelBuilder.Entity("Grade_Manager_Razor.ClassRoom", b =>
@@ -96,20 +64,6 @@ namespace Grade_Manager_Razor.Migrations
                     b.HasKey("ClassRoomId");
 
                     b.ToTable("ClassRooms");
-
-                    b.HasData(
-                        new
-                        {
-                            ClassRoomId = 1,
-                            IsDeleted = false,
-                            Name = "C#"
-                        },
-                        new
-                        {
-                            ClassRoomId = 2,
-                            IsDeleted = false,
-                            Name = "Java"
-                        });
                 });
 
             modelBuilder.Entity("Grade_Manager_Razor.Student", b =>
@@ -131,26 +85,6 @@ namespace Grade_Manager_Razor.Migrations
                     b.HasIndex("ClassRoomId");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            StudentId = 1,
-                            ClassRoomId = 1,
-                            Name = "JimBob"
-                        },
-                        new
-                        {
-                            StudentId = 2,
-                            ClassRoomId = 1,
-                            Name = "Bradley"
-                        },
-                        new
-                        {
-                            StudentId = 3,
-                            ClassRoomId = 1,
-                            Name = "Steven"
-                        });
                 });
 
             modelBuilder.Entity("Grade_Manager_Razor.Assignment", b =>

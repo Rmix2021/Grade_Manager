@@ -7,18 +7,18 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    <table>
+    @*<table>
         <thead>
             <tr>
                 <td>ClassRoom Name</td>               
             </tr>
         </thead>
-        @*@foreach (KeyValuePair<string, ClassRoom> item in Model.ClassRoomDictionary)
+        @foreach (var item in Model.ClassRoom)
         {
             <tr>
-                <td>@item.Value.Name</td><td><button>Edit</button></td><td><button>Remove</button></td>              
+                <td>@item.Name</td><td><button>Edit</button></td><td><button>Remove</button></td>              
             </tr>
-        }*@
-    </table>
+        }
+    </table>*@
 
 </div>

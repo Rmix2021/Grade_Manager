@@ -18,8 +18,8 @@ namespace Grade_Manager_Razor
         public string Name { get; set; }
 
         public List<Student> Students { get; set; } = new List<Student>();
-        
-       
-      
+
+        public bool IsDeleted { get; set; }
+
     }
 }
