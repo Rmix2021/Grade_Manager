@@ -19,19 +19,18 @@ namespace Grade_Manager_Razor
             _logger = factory.CreateLogger<ClassRoomService>();
         }
 
-        public List<ClassRoomSummaryViewModel> GetAllClassRooms()
+        public List<ClassRoom> GetAllClassRooms()
         {
-            //List<ClassRoom> classRooms = new List<ClassRoom>();
-            
-            return  _context.ClassRooms
-                .Select(x => new ClassRoomSummaryViewModel
-                {
-                    Id = x.ClassRoomId,
-                    Name = x.Name,
-                })
-                .ToList();
-        }
+            List<ClassRoom> classRooms = new List<ClassRoom>();
 
-        
+            var classroomList = _context.ClassRooms;
+            foreach (var classroom in classroomList)
+            {
+                classRooms.Add(classroom);
+
+            }
+            return classRooms;
+
+        }
     }
 }

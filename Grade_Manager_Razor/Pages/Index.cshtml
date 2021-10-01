@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "State Path";
+    ViewData["Title"] = "Main Menu";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -10,18 +10,21 @@
     <table class="table table-striped classroom">
         <thead>
             <tr>
-                <th>ClassRoom</th>
-               
-                <th></th>
+                <th>ClassRooms</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var classRoom in Model.ClassRooms)
             {
-<tr>
-    <td class="align-middle">@classRoom.Name</td>
-    
-</tr>            }
+                <tr>
+                    <td class="align-middle">@classRoom.Name</td>
+
+                </tr>
+            }
         </tbody>
     </table>
+    <li>
+        <a href="\ClassRooms\AddClassRoom"> Add ClassRooms </a>
+    </li>
+
 </div>
