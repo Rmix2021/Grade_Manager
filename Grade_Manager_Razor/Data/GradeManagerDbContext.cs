@@ -18,6 +18,8 @@ namespace Grade_Manager_Razor.Data
         {
         }
 
+       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

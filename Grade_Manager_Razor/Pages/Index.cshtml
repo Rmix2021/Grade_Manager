@@ -1,21 +1,27 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "State Path";
 }
 
-<div>
-    <h2>Main Menu</h2>
-    <ol>
-        <li>
-            <a href="ClassRooms\ClassRooms"> Show/Edit Classrooms</a>
-        </li>
-        <li>
-            <a href="ClassRooms\ClassRooms"> Add Classroom </a>
-        </li>
-        <li>
-            <a href="ClassRooms\ClassRooms"> ClassRoom Menu </a>
-        </li>
-    </ol>
+<h1>@ViewData["Title"]</h1>
 
+<div class="table-responsive">
+    <table class="table table-striped classroom">
+        <thead>
+            <tr>
+                <th>ClassRoom</th>
+               
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var classRoom in Model.ClassRooms)
+            {
+<tr>
+    <td class="align-middle">@classRoom.Name</td>
+    
+</tr>            }
+        </tbody>
+    </table>
 </div>
