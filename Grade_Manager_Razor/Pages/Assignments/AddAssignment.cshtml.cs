@@ -26,21 +26,31 @@ namespace Grade_Manager_Razor.Pages.Assignments
         public int studentid { get; set; }
 
         [BindProperty]
+        public Student student { get; set; }
+
+        [BindProperty]
         public Student Students { get; set; }
 
         private readonly AssignmentService _service;
 
+        private readonly StudentService _service2;
+
         private readonly ILogger<AddAssignmentModel> _logger;
 
-        public AddAssignmentModel(ILogger<AddAssignmentModel> logger, AssignmentService service)
+        public GradeManagerDbContext _context;
+
+        public AddAssignmentModel(ILogger<AddAssignmentModel> logger, AssignmentService service, GradeManagerDbContext context, StudentService service2)
         {
             _logger = logger;
             _service = service;
+            _service2 = service2;
+            _context = context;
         }
         public void OnGet(int StudentId)
         {
             Input = new AddAssignmentViewModel();
             studentid = StudentId;
+            student = _service2.GetAStudentById(StudentId);
         }
 
         public IActionResult OnPost()

@@ -78,7 +78,6 @@ namespace Grade_Manager_Razor.Pages.Assignments
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("/Students/StudentDetailsMenu", new { StudentId = Assignment.StudentId });
-                //return RedirectToPage("GradeAssignment", AssignmentId);
             }
 
             return Page();          

@@ -33,9 +33,8 @@
     </table>
 </div>
 
-<a asp-page="ClassRooms/Compare2Students" class="btn btn-success">Compare 2 Students</a>
-<a asp-page="ClassRooms/ShowBestStudent" class="btn btn-success">Show Best Student</a>
-<a asp-page="ClassRooms/ShowWorstStudent" class="btn btn-success">Show worst Student</a>
-<a asp-page="ClassRooms/ShowClassAverage" class="btn btn-success">Show Class Average</a>
-
-@*<td><a href="/Students/StudentDetailsMenu/@student.StudentId" class="btn btn-success">Student Details Menu</a></td>*@
+<a asp-page="/ClassRooms/Compare2Students" asp-route-id="@Model.classRoom.ClassRoomId" class="btn btn-success">Compare 2 Students</a>
+<a asp-page="/ClassRooms/ShowBestStudent" asp-route-id="@Model.classRoom.ClassRoomId" class="btn btn-success">Show Best Student</a>
+<a asp-page="/ClassRooms/ShowWorstStudent" asp-route-id="@Model.classRoom.ClassRoomId" class="btn btn-success">Show worst Student</a>
+<a asp-page="/ClassRooms/ShowClassAverage" asp-route-id="@Model.classRoom.ClassRoomId" class="btn btn-success">Show Class Average</a>
+<a asp-page="/Index" class="btn btn-success">Main Menu</a>

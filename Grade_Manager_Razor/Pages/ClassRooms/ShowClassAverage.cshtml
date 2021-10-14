@@ -1,13 +1,11 @@
-﻿@page
+﻿@page "{id}"
 @model Grade_Manager_Razor.Pages.ClassRooms.ShowClassAverageModel
 @{
     ViewData["Title"] = "Class Average";
 }
 
 <h1>@ViewData["Title"]</h1>
+<h2>ClassRoom @Model.classRoom.Name average grade is @Model.classroomsAverage</h2>
 
-<div>
-    <table>
-        <thead>Class Average</thead>
-    </table>
-</div>
+<a asp-page="/ClassRooms/ClassRoomDetailsMenu" asp-route-id="@Model.student.ClassRoomId" class="btn btn-success">Back to last Menu</a>
+

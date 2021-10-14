@@ -45,6 +45,7 @@ namespace Grade_Manager_Razor.Pages.Students
         public void OnGet(int StudentId)
         {
             assignment = _service2.GetWorstAssignment(StudentId);
+            student = _service.GetAStudentById(StudentId);
         }
 
         public void OnPost()

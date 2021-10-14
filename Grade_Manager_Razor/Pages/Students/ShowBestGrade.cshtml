@@ -7,22 +7,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    @Model.student.Name Best Assignment is:
+    @Model.student.Name Best Assignment is @Model.assignment.Name with a score of @Model.assignment.Grade
 </div>
 
-<div>
-    <table>
-        <thead>
-            <tr>
-                <td>Assignment Name</td>
-                <td>Assignment Grade</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Model.assignment.Name</td>
-                <td>@Model.assignment.Grade</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<a asp-page="/Students.StudentDetailsMenu" asp-route-id="@Model.student.StudentId" class="btn btn-success">Back to last Menu</a>

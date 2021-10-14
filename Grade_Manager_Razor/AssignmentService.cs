@@ -69,26 +69,42 @@ namespace Grade_Manager_Razor
             {
                 assignmentsAverage = assignmentsAverage + assignment.Grade;
             }
+            if(assignmentsAverage == 0)
+            {
+                return 0;
+            }
             return assignmentsAverage / assignments.Count;
                      
         }
 
-        public Assignment getBestAssignment(int id)
+        public Assignment GetBestAssignment(int id)
         {
-            List<Assignment> assignmentsList = new List<Assignment>();
-            assignmentsList = GetFilteredAssignments(id);
-            assignmentsList.Sort();
-            Assignment getBestAssignment = assignmentsList.First();
-            return getBestAssignment;
+            List<Assignment> assignments = new List<Assignment>();
+            assignments = GetFilteredAssignments(id);
+            Assignment theBestAssignment = new Assignment();
+            foreach (var assignment in assignments)
+            {
+                if(assignment.Grade >= theBestAssignment.Grade)
+                {
+                    theBestAssignment = assignment;
+                }
+            }            
+            return theBestAssignment;
         }
 
         public Assignment GetWorstAssignment(int id)
         {
-            List<Assignment> assignmentsList = new List<Assignment>();
-            assignmentsList = GetFilteredAssignments(id);
-            assignmentsList.Sort();
-            Assignment getWorstAssignment = assignmentsList.Last();
-            return getWorstAssignment;
+            List<Assignment> assignments = new List<Assignment>();
+            assignments = GetFilteredAssignments(id);
+            Assignment theWorstAssignment = assignments.First();
+            foreach (var assignment in assignments)
+            {
+                if (assignment.Grade <= theWorstAssignment.Grade)
+                {
+                    theWorstAssignment = assignment;
+                }
+            }
+            return theWorstAssignment;
         }
     }
 }

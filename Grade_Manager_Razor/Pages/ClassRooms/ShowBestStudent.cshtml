@@ -1,13 +1,13 @@
-﻿@page 
+﻿@page "{id}"
 @model Grade_Manager_Razor.Pages.ClassRooms.ShowBestStudentModel
-@@{
+@{
     ViewData["Title"] = "Best Student";
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    <table>
-        <thead>Best Student In Class</thead>
-    </table>
+    The Best student in class is: @Model.student.Name
 </div>
+
+<a asp-page="/ClassRooms/ClassRoomDetailsMenu" asp-route-id="@Model.student.ClassRoomId" class="btn btn-success">Back to last Menu</a>

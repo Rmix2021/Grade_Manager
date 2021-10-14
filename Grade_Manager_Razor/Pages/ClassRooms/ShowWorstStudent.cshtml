@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id}"
 @model Grade_Manager_Razor.Pages.ClassRooms.ShowWorstStudentModel
 @{
     ViewData["Title"] = "Worst Student";
@@ -7,7 +7,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    <table>
-        <thead>Worst Student</thead>
-    </table>
+    The Worst student in class is: @Model.student.Name
 </div>
+
+<a asp-page="/ClassRooms/ClassRoomDetailsMenu" asp-route-id="@Model.student.ClassRoomId" class="btn btn-success">Back to last Menu</a>

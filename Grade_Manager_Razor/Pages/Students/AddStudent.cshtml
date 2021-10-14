@@ -14,9 +14,10 @@
     <form method="post" asp-page-handler="Submit">
         <label>Student Name:</label>
         <input type="text" value="Student to Add" asp-for="@Model.Input.Name">
-        <input asp-for="@Model.classroomid"type="hidden" />
-        <input type="submit" value="Submit" class="text-success" >
+        <input asp-for="@Model.classroomid" type="hidden" />
+        <input type="submit" value="Submit" class="text-success">
         <span asp-validation-for="@Model.Input.Name" class="text-danger"></span>
     </form>
 </div>
 
+<a asp-page="/ClassRooms/ClassRoomDetailsMenu" asp-route-id="@Model.classroomid" class="btn btn-success">Back to last Menu</a>

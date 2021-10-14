@@ -49,7 +49,7 @@ namespace Grade_Manager_Razor.Pages.Students
             _service.AddNewStudent(Input);
 
             //return RedirectToPage("StudentDetailsMenu", new { Input.StudentId });
-            return RedirectToPage("../Index");
+            return RedirectToPage("/ClassRooms/ClassRoomDetailsMenu", new { id = classroomid });
 
 
         }

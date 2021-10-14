@@ -56,7 +56,7 @@ namespace Grade_Manager_Razor.Pages.Assignments
             }
             _context.Remove(assignment);
             await _context.SaveChangesAsync();
-            return RedirectToPage("../Index");
+            return RedirectToPage("/Students/StudentDetailsMenu", new { StudentId = assignment.StudentId });
         }
     }
 }
