@@ -21,16 +21,30 @@ namespace Grade_Manager_Razor
 
         public List<ClassRoom> GetAllClassRooms()
         {
-            List<ClassRoom> classRooms = new List<ClassRoom>();
+            
 
-            var classroomList = _context.ClassRooms;
-            foreach (var classroom in classroomList)
-            {
-                classRooms.Add(classroom);
-
-            }
-            return classRooms;
+            var classroomList = _context.ClassRooms.ToList();
+         
+            return classroomList;
 
         }
+
+        public void AddNewClassRoom(AddClassRoomViewModel name)
+        {
+            var classRoom = name.ToClassRoom();
+            _context.Add(classRoom);
+            _context.SaveChanges();
+            
+            
+        }
+
+        public ClassRoom GetFilteredClassRooms(int id)
+        {
+            return this._context.ClassRooms.Where(x => x.ClassRoomId == id).FirstOrDefault();
+                
+        }
+
+       
+
     }
 }

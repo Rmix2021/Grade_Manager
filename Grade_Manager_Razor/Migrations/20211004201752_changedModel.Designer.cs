@@ -2,15 +2,17 @@
 using Grade_Manager_Razor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Grade_Manager_Razor.Migrations
 {
     [DbContext(typeof(GradeManagerDbContext))]
-    partial class GradeManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211004201752_changedModel")]
+    partial class changedModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,24 +147,6 @@ namespace Grade_Manager_Razor.Migrations
                             StudentId = 3,
                             ClassRoomId = 1,
                             Name = "Steven"
-                        },
-                        new
-                        {
-                            StudentId = 4,
-                            ClassRoomId = 2,
-                            Name = "Jonathon"
-                        },
-                        new
-                        {
-                            StudentId = 5,
-                            ClassRoomId = 2,
-                            Name = "Heather"
-                        },
-                        new
-                        {
-                            StudentId = 6,
-                            ClassRoomId = 2,
-                            Name = "Warren"
                         });
                 });
 

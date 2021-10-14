@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{StudentId}"
 @model Grade_Manager_Razor.Pages.Students.ShowWorstGradeModel
 @{
     ViewData["Title"] = "Worst Grade";
@@ -7,7 +7,20 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
+    @Model.student.Name Worst Assignment is:
+</div>
+
+<div>
     <table>
-        <thead>Student Worst Grade</thead>
+       <thead>
+           <tr>
+               <td>Assignment Name</td><td>Assignment Grade</td>
+           </tr>
+       </thead>
+        <tbody>
+            <tr>
+                <td>@Model.assignment.Name</td><td>@Model.assignment.Grade</td>
+            </tr>
+        </tbody>
     </table>
 </div>

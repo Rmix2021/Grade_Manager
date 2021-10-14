@@ -25,6 +25,8 @@ namespace Grade_Manager_Razor.Data
             base.OnModelCreating(modelBuilder);
 
             
+
+            
             modelBuilder.Entity<ClassRoom>().HasData
             (
                 
@@ -61,7 +63,25 @@ namespace Grade_Manager_Razor.Data
                     StudentId = 3,
                     Name = "Steven",
                     ClassRoomId = 1
-                }               
+                },
+                new Student
+                {
+                    StudentId = 4,
+                    Name = "Jonathon",
+                    ClassRoomId = 2
+                },
+                new Student
+                {
+                    StudentId = 5,
+                    Name = "Heather",
+                    ClassRoomId = 2
+                },
+                new Student
+                {
+                    StudentId = 6,
+                    Name = "Warren",
+                    ClassRoomId = 2
+                }
                 );
 
             modelBuilder.Entity<Assignment>().HasData

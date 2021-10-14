@@ -2,15 +2,17 @@
 using Grade_Manager_Razor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Grade_Manager_Razor.Migrations
 {
     [DbContext(typeof(GradeManagerDbContext))]
-    partial class GradeManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211007223738_changedforeignkey")]
+    partial class changedforeignkey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,24 +170,20 @@ namespace Grade_Manager_Razor.Migrations
 
             modelBuilder.Entity("Grade_Manager_Razor.Assignment", b =>
                 {
-                    b.HasOne("Grade_Manager_Razor.Student", "Student")
+                    b.HasOne("Grade_Manager_Razor.Student", null)
                         .WithMany("Assignments")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Grade_Manager_Razor.Student", b =>
                 {
-                    b.HasOne("Grade_Manager_Razor.ClassRoom", "ClassRoom")
+                    b.HasOne("Grade_Manager_Razor.ClassRoom", null)
                         .WithMany("Students")
                         .HasForeignKey("ClassRoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ClassRoom");
                 });
 
             modelBuilder.Entity("Grade_Manager_Razor.ClassRoom", b =>

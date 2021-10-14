@@ -25,11 +25,15 @@ namespace Grade_Manager_Razor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddRazorPages();
             // Add framework services.
             services.AddDbContext<GradeManagerDbContext>(options =>options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddIdentity<User>().AddEntityFrameworkStores<GradeManagerDbContext>().AddDefaultTokenProviders();
             services.AddScoped<ClassRoomService>();
+            services.AddScoped<StudentService>();
+            services.AddScoped<AssignmentService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +60,7 @@ namespace Grade_Manager_Razor
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                
             });
         }
     }
