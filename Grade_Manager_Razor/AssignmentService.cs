@@ -50,7 +50,7 @@ namespace Grade_Manager_Razor
         public Assignment GetFilteredAssignmentToDelete(int id)
         {
             return this._context.Assignments.Where(x => x.AssignmentId == id).FirstOrDefault();
-            
+
         }
 
         public void GradeAssignment(GradeAssignmentViewModel gavm)
@@ -69,12 +69,12 @@ namespace Grade_Manager_Razor
             {
                 assignmentsAverage = assignmentsAverage + assignment.Grade;
             }
-            if(assignmentsAverage == 0)
+            if (assignmentsAverage == 0)
             {
                 return 0;
             }
             return assignmentsAverage / assignments.Count;
-                     
+
         }
 
         public Assignment GetBestAssignment(int id)
@@ -84,11 +84,11 @@ namespace Grade_Manager_Razor
             Assignment theBestAssignment = new Assignment();
             foreach (var assignment in assignments)
             {
-                if(assignment.Grade >= theBestAssignment.Grade)
+                if (assignment.Grade >= theBestAssignment.Grade)
                 {
                     theBestAssignment = assignment;
                 }
-            }            
+            }
             return theBestAssignment;
         }
 
@@ -106,5 +106,5 @@ namespace Grade_Manager_Razor
             }
             return theWorstAssignment;
         }
-    }
+    }        
 }

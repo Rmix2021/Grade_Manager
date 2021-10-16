@@ -56,9 +56,8 @@ namespace Grade_Manager_Razor.Pages.Students
                 }
                 _context.Remove(student);
                 await _context.SaveChangesAsync();
-            //return Page();
-            //return RedirectToPage("ClassRooms/ClassRoomDetailsMenu/11");
-            return RedirectToPage("../Index");
+
+            return RedirectToPage("/ClassRooms/ClassRoomDetailsMenu", new { id = student.ClassRoomId });
         }
     }
 }

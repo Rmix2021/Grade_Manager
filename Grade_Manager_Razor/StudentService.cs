@@ -23,6 +23,8 @@ namespace Grade_Manager_Razor
 
         readonly ILogger _logger;
 
+       
+
         public StudentService(GradeManagerDbContext context, ILoggerFactory factory, AssignmentService service)
         {
             this._context = context;
@@ -112,6 +114,20 @@ namespace Grade_Manager_Razor
             return theWorstStudent;
         }
 
+        public Student Compare2Students(int id, int id2)
+        {
+            double student1 = _service.AssignmentsAverage(id);
+            double student2 = _service.AssignmentsAverage(id2);
+            if(student1 > student2)
+            {
+                return GetAStudentById(id);
+            }
+            else
+            {
+                return GetAStudentById(id2);
+            }
+
+        }
 
 
 
